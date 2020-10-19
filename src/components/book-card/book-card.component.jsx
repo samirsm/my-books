@@ -9,6 +9,7 @@ import {
 	updateReadDate,
 	getBookByID,
 } from "../../services/storage.service";
+import { pathApiImage } from "../../shared/constants";
 
 const BookCard = ({ id, title, cover_id, read_date, history }) => {
 	const [read, setRead] = useState(false);
@@ -75,9 +76,7 @@ const CardImage = styled.img.attrs({ className: "card-image" })`
 	width: 100%;
 	height: 60%;
 	background-image: ${({ coverId }) =>
-		coverId
-			? `url(https://covers.openlibrary.org/b/id/${coverId}-M.jpg)`
-			: null};
+		coverId ? `url(${pathApiImage}${coverId}-M.jpg)` : null};
 	background-size: cover;
 	background-repeat: no-repeat;
 	border: none;

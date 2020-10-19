@@ -11,17 +11,28 @@ const ReadBooksPage = () => {
 	}, []);
 	return (
 		<ContainerPage>
+			<Title>{`Anual report chart for ${new Date(
+				Date.now(),
+			).getFullYear()}`}</Title>
 			<Chart></Chart>
+			<Title>Read books</Title>
+
 			<ContainerBooks>
-				{books.map((book, index) => (
-					<BookCard key={index} {...book}></BookCard>
-				))}
+				{books
+					.sort((a, b) => new Date(a.read_date) - new Date(b.read_date))
+					.map((book, index) => (
+						<BookCard key={index} {...book}></BookCard>
+					))}
 			</ContainerBooks>
 		</ContainerPage>
 	);
 };
 
 export default ReadBooksPage;
+
+const Title = styled.h1`
+	color: var(--color-primary);
+`;
 
 const ContainerPage = styled.div`
 	width: 100%;

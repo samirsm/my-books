@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { pathApi } from "../../shared/constants";
+import { pathApi, pathApiImage } from "../../shared/constants";
 import styled from "styled-components";
 
 const BookDetailsPage = match => {
@@ -82,9 +82,7 @@ const Image = styled.img`
 	width: 20%;
 	height: 35vh;
 	background-image: ${({ coverId }) =>
-		coverId
-			? `url(https://covers.openlibrary.org/b/id/${coverId}-L.jpg)`
-			: null};
+		coverId ? `url(${pathApiImage}${coverId}-L.jpg)` : null};
 	background-size: contain;
 	background-position: center;
 	background-repeat: no-repeat;
