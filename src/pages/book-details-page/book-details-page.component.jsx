@@ -40,11 +40,13 @@ const BookDetailsPage = match => {
 					</Subject>
 				</ContentInfo>
 			</ContentHeader>
-			<Description>
-				{typeof book.description === "string"
-					? book.description
-					: book.description.value}
-			</Description>
+			{book.description ? (
+				<Description>
+					{typeof book.description === "string"
+						? book.description
+						: book.description.value}
+				</Description>
+			) : null}
 		</ContainerPage>
 	);
 };
