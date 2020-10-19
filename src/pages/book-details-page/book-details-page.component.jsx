@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { pathApi, pathApiImage } from "../../shared/constants";
 import styled from "styled-components";
 
-const BookDetailsPage = match => {
+const BookDetailsPage = ({ match }) => {
 	const [book, setBook] = useState({
 		title: "",
 		subjects: [],
@@ -13,7 +13,7 @@ const BookDetailsPage = match => {
 	const [author, setAuthor] = useState("");
 	useEffect(() => {
 		async function fetchBook() {
-			const { id, numberID } = match.match.params;
+			const { id, numberID } = match.params;
 			const response = await fetch(`${pathApi}/${id}/${numberID}.json`);
 			await response.json().then(async d => {
 				setBook(d);
